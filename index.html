@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Find The Number(between 0 and 100):</h1>
+        <input type="text" id="user-input">
+        <!--guess-->
+        <button id="button" onclick="guessf()"> CHECK </button>
+        <p id="result"></p>
+        <p id="counter"></p>
+    </div>
+    <script>
+        let count = 0
+        let output = document.getElementById("result"); //htmlde cikacak higher-lower kismi
+
+        let number = Math.floor(Math.random() * 100) + 1 //randomnumber
+        alert(number);
+
+
+        function guessf() {
+            // if (document.getElementById("button").value == "GUESS") {
+             count++
+            let input = document.getElementById("user-input").value;
+            if (number > input) {
+                document.getElementById("result").innerHTML = "I am thinking about higher number.";
+                document.getElementById("counter").innerHTML = "This is your test number:" + count;
+
+            }
+            else if (number < input) {
+                document.getElementById("result").innerHTML = "I am thinking about lower number.";
+                document.getElementById("counter").innerHTML = "This is your test number:" + count;
+
+            } else if (number == input) {
+                alert(`You are the winner:) You guest after ${count} times`);
+                if (window.confirm("Do you want to play again?")) {
+                    number = Math.floor((Math.random() * 100) + 1);
+                    count = 0
+                    document.getElementById("user-input").focus();
+                    document.getElementById("user-input").value = "";
+                    document.getElementById("button").value = "";
+                    document.getElementById("result").innerHTML = "";
+                    document.getElementById("counter").innerHTML = "This is your test number: 0"
+
+                }
+                else {
+                    window.alert("Thank you for playing the game");
+                    document.getElementById("user-input").focus();
+                    document.getElementById("user-input").value = "";
+                    document.getElementById("button").value = "";
+                    document.getElementById("result").innerHTML = "";
+                    document.getElementById("counter").innerHTML = "";
+                }
+            }
+            else {
+                alert("Please enter a number!")
+            }
+            // count++;
+            document.getElementById("user-input").focus();
+            document.getElementById("button").value = ""
+        }
+    </script>
+</body>
+
+</html>
